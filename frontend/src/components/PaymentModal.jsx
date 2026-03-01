@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { payOrder } from '../services/api';
 import { FaCreditCard, FaMobileAlt, FaCheckCircle, FaLock, FaReceipt, FaTimes } from 'react-icons/fa';
-import { SiVisa, SiMastercard } from 'react-icons/si';
+
 
 const STEPS = { FORM: 'form', PROCESSING: 'processing', SUCCESS: 'success' };
 
@@ -75,7 +75,7 @@ const PaymentModal = ({ show, onClose, orderId, total, paymentMethod, orderItems
 
   if (!show) return null;
 
-  const maskedCard = cardNumber.replace(/\d(?=\d{4})/g, '•');
+
 
   return (
     <div

@@ -13,8 +13,11 @@ const Footer = () => (
           </div>
           <p className="text-muted small">Delicious food delivered to your doorstep. Fresh ingredients, authentic recipes, unforgettable taste.</p>
           <div className="d-flex gap-3 mt-3">
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a href="#" className="text-muted"><FaFacebook size={20} /></a>
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a href="#" className="text-muted"><FaInstagram size={20} /></a>
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a href="#" className="text-muted"><FaTwitter size={20} /></a>
           </div>
         </div>
