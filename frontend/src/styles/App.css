@@ -1,0 +1,444 @@
+/* ============================================
+   FoodieHub - Restaurant Management System CSS
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --primary: #ff6b35;
+  --primary-dark: #e85520;
+  --secondary: #f7931e;
+  --dark: #1a1a2e;
+  --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --card-shadow-hover: 0 8px 36px rgba(0, 0, 0, 0.15);
+  --border-radius: 16px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #f8f9fa;
+  color: #2d3748;
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+}
+
+/* ============ HERO SECTION ============ */
+.hero-section {
+  min-height: 85vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 107, 53, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title {
+  line-height: 1.2;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+
+.hero-food-img {
+  width: 420px;
+  height: 420px;
+  object-fit: cover;
+  border: 8px solid rgba(255,255,255,0.1);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.min-vh-75 { min-height: 75vh; }
+
+/* ============ STAT SECTION ============ */
+.stat-item { padding: 8px 0; }
+.stat-icon { font-size: 1.6rem; }
+
+/* ============ CATEGORY CARDS ============ */
+.category-card {
+  background: white;
+  transition: var(--transition);
+  cursor: pointer;
+  border: 2px solid transparent !important;
+}
+
+.category-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--card-shadow-hover) !important;
+  border-color: #ff6b35 !important;
+}
+
+/* ============ FOOD CARD ============ */
+.food-card {
+  transition: var(--transition);
+}
+
+.food-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-shadow-hover) !important;
+}
+
+.food-card-img {
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.food-card:hover .food-card-img {
+  transform: scale(1.05);
+}
+
+/* ============ SECTION HEADERS ============ */
+.section-header h2 { font-weight: 800; }
+
+/* ============ NAVBAR ============ */
+.navbar {
+  padding: 12px 0;
+  transition: var(--transition);
+}
+
+.navbar-brand { font-size: 1.4rem !important; }
+
+.nav-link:hover { opacity: 0.85; }
+.navbar-toggler:focus { box-shadow: none; }
+
+/* ============ FOOTER ============ */
+.footer-section { background: #0d0d1a !important; }
+
+.footer-link:hover { color: #ff6b35 !important; }
+
+/* ============ AUTH PAGES ============ */
+.auth-page {
+  background: linear-gradient(135deg, #fff 0%, #fff5f0 100%);
+}
+
+.auth-card {
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.8) !important;
+}
+
+.auth-logo {
+  width: 68px;
+  height: 68px;
+  background: linear-gradient(135deg, #ff6b35, #f7931e);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  color: white;
+}
+
+/* ============ CART SIDEBAR ============ */
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1040;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.cart-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 380px;
+  height: 100vh;
+  background: white;
+  z-index: 1050;
+  transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: -10px 0 40px rgba(0,0,0,0.15);
+}
+
+.cart-sidebar.open { right: 0; }
+.cart-sidebar-header { background: #fff; border-bottom: 1px solid #f0f0f0; flex-shrink: 0; }
+.cart-sidebar-body { flex: 1; overflow-y: auto; }
+.cart-sidebar-footer { flex-shrink: 0; background: white; }
+
+/* ============ CART PAGE ============ */
+.cart-item-row:last-child { border-bottom: none !important; }
+
+/* ============ ORDER PROGRESS ============ */
+.order-progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 0 8px;
+}
+
+.order-progress::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 8px;
+  right: 8px;
+  height: 2px;
+  background: #e9ecef;
+  z-index: 0;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  z-index: 1;
+}
+
+.progress-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #dee2e6;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px #dee2e6;
+  transition: background 0.3s;
+}
+
+.progress-dot.active {
+  background: #ff6b35;
+  box-shadow: 0 0 0 2px #ff6b35;
+}
+
+/* ============ ADMIN LAYOUT ============ */
+.admin-sidebar {
+  width: 240px;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.admin-sidebar.collapsed {
+  width: 64px;
+}
+
+.admin-sidebar .sidebar-header { padding: 16px !important; min-height: 64px; }
+
+.sidebar-nav-link {
+  color: rgba(255,255,255,0.65) !important;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.sidebar-nav-link:hover, .sidebar-nav-link.active {
+  background: rgba(255, 107, 53, 0.2) !important;
+  color: #ff6b35 !important;
+}
+
+.sidebar-nav-link.active {
+  background: rgba(255, 107, 53, 0.25) !important;
+  color: #ff6b35 !important;
+  font-weight: 600;
+}
+
+.sidebar-footer { margin-top: auto; }
+
+.user-avatar-small {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #ff6b35, #f7931e);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.admin-main {
+  background: #f8f9fa;
+  flex: 1;
+}
+
+/* ============ AVATAR CIRCLE ============ */
+.avatar-circle {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #ff6b35, #f7931e);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+/* ============ MENU PAGE ============ */
+.menu-search-bar { border-radius: 50px !important; border: 1px solid #e9ecef; }
+.menu-header { padding-top: 20px; }
+
+/* ============ ORDER CARD ============ */
+.order-card { transition: var(--transition); }
+.order-card:hover { transform: translateY(-2px); }
+
+/* ============ DARK MODE ============ */
+.dark-mode {
+  background-color: #0d0d1a;
+  color: #e2e8f0;
+}
+
+.dark-mode .card {
+  background: #1a1a2e !important;
+  color: #e2e8f0 !important;
+}
+
+.dark-mode .bg-light {
+  background-color: #16213e !important;
+}
+
+.dark-mode .text-muted {
+  color: #a0aec0 !important;
+}
+
+.dark-mode .table {
+  color: #e2e8f0;
+}
+
+.dark-mode .table-light {
+  background: #16213e;
+  color: #e2e8f0;
+}
+
+.dark-mode .form-control,
+.dark-mode .form-select {
+  background-color: #16213e;
+  border-color: #2d3748;
+  color: #e2e8f0;
+}
+
+.dark-mode .navbar-light {
+  background: #1a1a2e !important;
+}
+
+.dark-mode .auth-page {
+  background: #0d0d1a;
+}
+
+.dark-mode .auth-card {
+  background: #1a1a2e !important;
+}
+
+.dark-mode .footer-section {
+  background: #070712 !important;
+}
+
+.dark-mode .category-card {
+  background: #1a1a2e !important;
+  color: #e2e8f0;
+}
+
+/* ============ UTILITIES ============ */
+.rounded-4 { border-radius: 16px !important; }
+.rounded-5 { border-radius: 24px !important; }
+
+.bg-danger-subtle { background-color: rgba(255, 107, 53, 0.1) !important; }
+.text-danger { color: #ff6b35 !important; }
+.bg-danger { background-color: #ff6b35 !important; }
+.btn-danger { background-color: #ff6b35 !important; border-color: #ff6b35 !important; }
+.btn-danger:hover { background-color: #e85520 !important; border-color: #e85520 !important; }
+.btn-outline-danger { color: #ff6b35 !important; border-color: #ff6b35 !important; }
+.btn-outline-danger:hover { background-color: #ff6b35 !important; color: white !important; }
+
+.shadow-sm { box-shadow: var(--card-shadow) !important; }
+.shadow-lg { box-shadow: 0 12px 48px rgba(0,0,0,0.15) !important; }
+
+/* ============ SCROLLBAR ============ */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+/* ============ ANIMATIONS ============ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.food-card, .category-card, .order-card {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+  .hero-section { min-height: 70vh; }
+  .hero-title { font-size: 2rem !important; }
+  .cart-sidebar { width: 100%; right: -100%; }
+  .admin-sidebar { position: fixed; z-index: 1030; height: 100%; }
+  .admin-main { margin-left: 0; }
+}
+
+@media (max-width: 576px) {
+  .food-card-img { height: 150px; }
+  .hero-food-img { width: 280px; height: 280px; }
+}
+
+/* ============ CTA SECTION ============ */
+.cta-section {
+  background: linear-gradient(135deg, #ff6b35, #f7931e) !important;
+}
+
+/* ============ TABLE ============ */
+.table > :not(caption) > * > * { padding: 14px 16px; }
+
+/* ============ BADGES ============ */
+.badge { font-weight: 500; }
+
+/* ============ INPUT GROUP ============ */
+.input-group-text { border-color: #e9ecef; }
+.form-control:focus, .form-select:focus {
+  border-color: #ff6b35;
+  box-shadow: 0 0 0 0.2rem rgba(255, 107, 53, 0.15);
+}
