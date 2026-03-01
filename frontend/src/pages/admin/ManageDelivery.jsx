@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { getAllOrders, updateOrderStatus, assignDelivery } from '../../services/api';
 import Loader from '../../components/Loader';
 import toast from 'react-hot-toast';
-import { FaTruck, FaSync, FaCheckCircle, FaTimesCircle, FaMotorcycle } from 'react-icons/fa';
+import { FaTruck, FaSync, FaCheckCircle, FaMotorcycle } from 'react-icons/fa';
 
 const statusColors = { pending: 'warning', confirmed: 'info', preparing: 'primary', ready: 'success', delivered: 'success', cancelled: 'danger' };
 

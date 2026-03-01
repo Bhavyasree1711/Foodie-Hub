@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getAllOrders, updateOrderStatus, getOrderById, assignDelivery } from '../../services/api';
 import Loader from '../../components/Loader';
 import toast from 'react-hot-toast';
-import { FaEye, FaFilter, FaTruck, FaSync } from 'react-icons/fa';
+import { FaEye, FaFilter, FaTruck } from 'react-icons/fa';
 
 const FOOD_IMAGES = {
   'Veg Spring Rolls':     'https://images.unsplash.com/photo-1548943487-a2e4e43b4853?w=400&h=280&fit=crop&auto=format',
@@ -43,7 +43,7 @@ const ManageOrders = () => {
       .finally(() => setLoading(false));
   };
 
-  useEffect(() => { load(); }, [filterStatus]);
+  useEffect(() => { load(); }, [filterStatus]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleStatusUpdate = async (orderId, status) => {
     try {

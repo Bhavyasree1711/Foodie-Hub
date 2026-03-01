@@ -6,7 +6,7 @@ import Loader from '../components/Loader';
 import { FaFilter, FaTimes } from 'react-icons/fa';
 
 const Menu = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [items, setItems] = useState([]);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
